@@ -23,6 +23,7 @@ jobs:
       if: always()
       with:
         name: playwright-report
-        targetPath: ''
-        path: playwright-report/index.html
+     
+        targetpath: playwright-report/index.html
+           
         retention-days: 30
