@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Page,chromium } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('https://demo.playwright.dev/todomvc');
@@ -434,4 +434,21 @@ async function checkTodosInLocalStorage(page: Page, title: string) {
   return await page.waitForFunction(t => {
     return JSON.parse(localStorage['react-todos']).map((todo: any) => todo.title).includes(t);
   }, title);
+
+
+
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage();
+  
+  // Open a new tab and navigate to a URL
+  const newPage = await browser.newPage();
+  await newPage.goto('https://example.com');
+
+  // You can perform actions on the new tab here
+
+  await browser.close();
+})();
+
+  
 }
